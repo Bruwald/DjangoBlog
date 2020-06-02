@@ -1,0 +1,52 @@
+{% extends "generic.html" %}
+
+{% block title %}<title>Author Detail</title>{% endblock %}
+
+{% block content %}
+<div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h2 class="mt-4 mb-3">Biography of {{ author.first_name }} {{author.last_name}} </h2>
+        <div class="row">
+            <div id="post_contents">
+                <p class="lead" style="padding: 40px;">{{ author.biography }} </p>
+            </div>
+        </div>
+        <hr>
+        <h2>Blogs by {{author.first_name}} {{author.last_name}}</h2>
+        <div class="row" style="padding: 20px;">
+                {% for blog in blogs %}
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+                        <div class="card h-100">
+                            {% if blog.blog_theme|stringformat:"s" == "Nature" %}
+                                {% load static %}
+                                <img class="card-img-top" src="{% static 'images/nature.jpg' %}" alt="Nature Image">
+                            {% elif blog.blog_theme|stringformat:"s" == "Technology" %}
+                                {% load static %}
+                                <img class="card-img-top" src="{% static 'images/tech.jpg' %}" alt="Tech Image">
+                            {% elif blog.blog_theme|stringformat:"s" == "Space" %}
+                                {% load static %}
+                                <img class="card-img-top" src="{% static 'images/rocket.jpg' %}" alt="Space Image">
+                            {% else %}
+                                {% load static %}
+                                <img class="card-img-top" src="{% static 'images/placeholder.jpg' %}" alt="Placeholder Image">
+                            {% endif %}
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    {{ blog.blog_title }}
+                                    <small>by
+                                        <small style="color:blue;">{{blog.author.first_name}} {{blog.author.last_name}}</small>
+                                    </small>
+                                </h4>
+                                <p class="card-text just"> {{ blog.blog_summary }} </p>
+                                <a href="{{ blog.get_absolute_url }}" class="btn btn-primary">Read More</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                {{ blog.blog_date }}
+                            </div>
+                        </div>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+{% endblock %}%}

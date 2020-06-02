@@ -1,0 +1,20 @@
+{% extends "generic.html"%}
+
+{% block title %}<title>New Post</title>{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                {% load crispy_forms_tags %}
+                <h2 class="card-title text-center" style="padding-top:20px">New Blog</h5>
+                <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-lg btn-success btn-block" type="submit">Create Blog</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

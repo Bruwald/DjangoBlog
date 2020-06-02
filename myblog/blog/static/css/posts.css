@@ -1,0 +1,29 @@
+body {
+    padding-top: 56px;
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+#posts_title {
+    padding-top: 20px;
+}
+
+.date_posted,
+.end_fl {
+    float: right;
+    padding-left: 5px;
+}
+
+#my_form {
+    padding: 20px;
+}
+
+.just {
+    text-align: justify;
+}
+
+#post_contents {
+    text-align: justify;
+}
